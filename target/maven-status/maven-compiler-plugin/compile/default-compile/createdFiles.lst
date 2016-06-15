@@ -1,0 +1,4 @@
+io/swagger/sample/models/Person.class
+io/swagger/utils/ResponseExceptionMapper.class
+io/swagger/sample/models/ApiResponse.class
+io/swagger/sample/controllers/SampleController.class

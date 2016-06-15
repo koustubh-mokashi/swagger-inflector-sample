@@ -1,0 +1,14 @@
+controllerPackage: io.swagger.sample.controllers
+modelPackage: io.swagger.sample.models
+swaggerUrl: swagger.yaml
+
+# add any model mappings you like if you have existing models to use
+modelMappings:
+ Person: io.swagger.sample.models.Person
+
+entityProcessors:
+  - json
+  - xml
+
+exceptionMappers:
+  - io.swagger.utils.ResponseExceptionMapper

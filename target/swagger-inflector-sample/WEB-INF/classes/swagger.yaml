@@ -1,0 +1,78 @@
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "1.0.0"
+  title: Sample API
+
+basePath: /v1
+
+# Replace this with the path to your actual implementation
+host: localhost:8080
+
+# Describe your paths here
+paths:
+  /people:
+    # This is a HTTP operation
+    get:
+      # Describe this verb here. Note: you can use markdown
+      tags:
+        - Person
+      x-swagger-router-controller: SampleController
+      description: |
+        Gets `Person` object
+        Optional query param of **id** determines
+      operationId: getPersonById
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        # An example parameter that is in query and is required
+        - name: id
+          in: query
+          description: id of person
+          required: true
+          type: integer
+          format: int32
+      # Expected responses for this operation:
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          # A schema describing your response object
+          schema:
+            items:
+              $ref: '#/definitions/Person'
+              
+    post:
+      tags:
+        - Person
+      summary: Add a new person to people
+      x-swagger-router-controller: SampleController
+      description: ""
+      operationId: addPerson
+      consumes:
+        - application/json
+        - application/xml
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Person object that needs to be added to the People
+          required: false
+          schema:
+            $ref: "#/definitions/Person"
+      responses:
+        "405":
+          description: Invalid input
+     
+definitions:
+  Person:
+    type: object
+    properties:
+      id:
+        type: int
+      name:
+        type: string
